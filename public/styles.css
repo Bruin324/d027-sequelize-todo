@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.container {
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+h1 {
+    margin: 20px 0 10px;
+    text-transform: uppercase;
+    color: #333333;
+}
+
+#todo-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    font-size: inherit;
+    line-height: inherit;
+    flex-basis: calc(100% - 140px);
+    border: 2px solid grey;
+    padding: 5px 10px;
+
+}
+
+input:focus {
+    border: 2px solid #333333;
+    outline: none;
+}
+
+button {
+    width: 150px;
+    border: 2px solid dimgrey;
+    background: white;
+    font-size: .75em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+button:hover {
+    background: #333333;
+    color: white;
+    cursor: pointer;
+}
+
+#markComplete button {
+    background: #333333;
+    color: white;
+    margin-right: 20px;
+    width: auto;
+}
+
+form#markComplete button:hover {
+    background: white;
+    color: #333333;
+}
+
+form#markComplete li {
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.complete {
+    text-decoration: line-through;
+}

@@ -15,7 +15,7 @@ application.engine('mustache', mustache());
 application.set('views', './views');
 application.set('view engine', 'mustache');
 
-
+application.use(express.static(__dirname + '/public'))
 application.use(bodyParser.urlencoded());
 application.use(expressValidator());
 
