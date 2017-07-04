@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    max-width: 500px;
+    max-width: 700px;
     margin: 20px auto;
 }
 
@@ -19,12 +19,18 @@ h1 {
     color: #333333;
 }
 
+.list-header {
+    margin: 16px 0;
+    font-size: 24px;
+    font-weight: 300;
+}
+
 #todo-form {
     display: flex;
     justify-content: space-between;
 }
 
-input {
+input, select {
     font-size: inherit;
     line-height: inherit;
     flex-basis: calc(100% - 140px);
@@ -39,7 +45,7 @@ input:focus {
 }
 
 button {
-    width: 150px;
+    width: 235px;
     border: 2px solid dimgrey;
     background: white;
     font-size: .75em;
@@ -52,6 +58,38 @@ button:hover {
     background: #333333;
     color: white;
     cursor: pointer;
+}
+
+.item-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.incomplete-headers {
+    width:50%;
+    display: flex;
+}
+
+.incomplete-name-header {
+    display:inline;
+    width: 71%;
+}
+
+.incomplete-priority-header {
+    display:inline;
+    width: 29%
+}
+
+.incomplete-name {
+    flex: 2;
+}
+
+.incomplete-priority {
+    flex: 1;
+}
+
+.incomplete-button {
+    width: 95%;
 }
 
 #markComplete button {
@@ -69,6 +107,10 @@ form#markComplete button:hover {
 form#markComplete li {
     display: inline-block;
     margin: 10px 0;
+}
+
+.completed-cell {
+    flex: 1;
 }
 
 .complete {

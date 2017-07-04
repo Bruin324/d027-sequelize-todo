@@ -1,35 +1,67 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <title>To Do List</title>
-        <link rel="stylesheet" href="./styles.css">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="../public/styles.css">
+</head>
 
-    <body>
-        <div class = 'container'>
+<body>
+    <div class='container'>
         <h1>To Do List</h1>
-        <form id = "todo-form" method="post" action="/">
+        <form id="todo-form" method="post" action="/">
             <input type="text" name="listItem" placeholder="New List Item" autofocus>
+            <select name="priority">
+                <option value='' selected disabled>Priority</option>
+                <option value='1-High'>1-High</option>
+                <option value='2-Medium'>2-Medium</option>
+                <option value='3-Low'>3-Low</option>
+            </select>
+            <button type="submit">Add to list</button>
         </form>
 
-        <p> Incomplete Items</p>
-        {{#list}} {{^checked}}
-        <form method="post" action="/{{name}}">
+        <div class="list-header"> Incomplete Items</div>
+        <div class='incomplete-headers'>
+            <div class='incomplete-name-header'>Item</div>
+            <div class='incomplete-priority-header'>Priority</div>
+            <!--<div class='incomplete-button-header'></div>
+            <div class='incomplete-button-header'></div>-->
+        </div>
+        {{#Item}} {{^isCompleted}}
+        <div class='item-row'>
+            <div class='incomplete-name'>{{name}}</div>
+            <div class='incomplete-priority'>{{priority}}</div>
+            <form method="get" action="/edit/{{id}}">
+                <button class='incomplete-button' name="complete" value="{{id}}">Edit Item</button>
+            </form>
+            <form method="post" action="/complete">
+                <button class='incomplete-button' name="complete" value="{{id}}">Mark Complete</button>
+            </form>
+            <form method="post" action="/delete">
+                <button class='incomplete-button' name="delete" value="{{id}}">Delete Task</button></p>
+            </form>
+        </div>
+        {{/isCompleted}} {{/Item}}
 
-            <p><button value={ {list.item}}>Mark Complete</button> {{name}}</p>
-
+        <div class="list-header">Completed Items</div>
+        <form method='post' action='/del-complete'>
+            <button type="submit">Delete all Completed Items</button>
         </form>
-        {{/checked}} {{/list}}
-        <p>Completed Items</p>
+        <div class='item-row'>
+            <div class='completed-cell'>Item</div>
+            <div class='completed-cell'>Priority</div>
+            <div class='completed-cell'>Completed On</div>
+        </div>
 
-        {{#list}} {{#checked}}
-
-        <p>{{name}}</p>
-
-        {{/checked}} {{/list}}
-</div>
-    </body>
+        {{#Item}} {{#isCompleted}}
+        <div class='item-row'>
+            <div class='completed-cell'>{{name}}</div>
+            <div class='completed-cell'>{{priority}}</div>
+            <div class='completed-cell'>{{completedAt}}</div>
+        </div>
+        {{/isCompleted}} {{/Item}}
+    </div>
+</body>
 
 </html>

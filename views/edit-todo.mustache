@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <title>ToDo List - Edit Item</title>
+    <link rel="stylesheet" href="../public/styles.css">
+</head>
+
+<body>
+    <div class='container'>
+        <h1>Edit To Do Item</h1>
+        {{#item}}
+        <form id="todo-form" method="post" action="/edit/{{id}}">
+            <input type="text" name="listItem" value="{{name}}" autofocus>
+            <select name="priority">
+                <option value='' selected disabled>Keep Original Priority</option>
+                <option value='1-High'>1-High</option>
+                <option value='2-Medium'>2-Medium</option>
+                <option value='3-Low'>3-Low</option>
+            </select>
+            <button type="submit">Update item</button>
+        </form>
+        {{/item}}
+    </div>
+
+</body>
+
+</html>
